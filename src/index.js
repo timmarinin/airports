@@ -103,7 +103,7 @@ api.get('/:country', (req, res) => {
   if (cities) {
     res.json({
       country: req.params.country,
-      cities: Object.entries(cities).map(([city, airports]) => ({name: city, airpors: airports.size}))
+      cities: Object.entries(cities).map(([city, airports]) => ({name: city, airports: airports.size}))
     })
   } else {
     res.status(404).json({error: 'Country Not Found'})
