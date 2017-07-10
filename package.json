@@ -1,5 +1,5 @@
 {
-  "name": "airports-list",
+  "name": "airports-api",
   "version": "1.0.0",
   "description": "Simple API to get airports",
   "main": "src/index.js",
