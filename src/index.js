@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 const raw = require('../data/airports.json')
 
@@ -97,7 +98,7 @@ api.get('/:country/:city', (req, res) => {
   }
 })
 
-app.get('/:country', (req, res) => {
+api.get('/:country', (req, res) => {
   const cities = idx_by_country_city[req.params.country]
   if (cities) {
     res.json({
@@ -111,6 +112,7 @@ app.get('/:country', (req, res) => {
 
 api.get('/:country/:city/:code', icao_handler)
 
+app.use(cors())
 app.use(api)
 app.get('/', (req, res) => res.json({endpoints: { iata: '/iata' }}))
 app.listen(8080, () => console.log('Started listening on localhost:8080'))
