@@ -27,7 +27,7 @@ which is licensed under MIT license.
 <dl>
   <dt>/iata</dt>
   <dd>Get all available IATA codes in the dataset.</dd>
-  <dt>/iata/[IATA]></dt>
+  <dt>/iata/[IATA]</dt>
   <dd>Get airport description or <code>{"error": "Airport Not Found"}</code></dd>
   <dt>/icao</dt>
   <dd>Get all available ICAO codes in the dataset</dd>
