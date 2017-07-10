@@ -123,4 +123,6 @@ const index = {
 app.use(cors())
 app.use(api)
 app.get('/', (req, res) => res.json(index))
-app.listen(process.env.PORT || 8080, () => console.log('Started listening on localhost:8080'))
+
+const port = process.env.PORT || 8080
+app.listen(port, () => console.log('Started listening on localhost:%s', port))
