@@ -42,7 +42,7 @@ api.get('/iata/:code', (req, res) => {
   sendAirport(res, d)
 })
 
-api.get('/iata', (req, res) => {
+api.get('/iata/?', (req, res) => {
   res.json({
     codes: Object.keys(idx_by_iata).sort()
   })
@@ -112,7 +112,15 @@ api.get('/:country', (req, res) => {
 
 api.get('/:country/:city/:code', icao_handler)
 
+const index = {
+  endpoints: {
+      iata: '/iata',
+      icao: '/icao',
+      countries: Object.keys(idx_by_country_city).reduce((obj, country) => ((obj[country] = '/' + country), obj), {})
+  }
+}
+
 app.use(cors())
 app.use(api)
-app.get('/', (req, res) => res.json({endpoints: { iata: '/iata' }}))
+app.get('/', (req, res) => res.json(index))
 app.listen(process.env.PORT || 8080, () => console.log('Started listening on localhost:8080'))
