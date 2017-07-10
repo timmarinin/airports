@@ -42,12 +42,10 @@ api.get('/iata/:code', (req, res) => {
   sendAirport(res, d)
 })
 
-const sortedIATA = Object.keys(idx_by_iata).sort()
+const sortedIATA = { codes: Object.keys(idx_by_iata).sort() }
 
 api.get('/iata/?', (req, res) => {
-  res.json({
-    codes: sortedIATA
-  })
+  res.json(sortedIATA)
 })
 
 const icao_handler = (req, res) => {
